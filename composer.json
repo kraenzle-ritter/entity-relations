@@ -1,0 +1,46 @@
+{
+    "name": "kraenzle-ritter/entity-relations",
+    "description": "Typed relations and hierarchies between Eloquent entities (keywords, actors, places, records), stored in one polymorphic table. Configurable relation types with inverse, symmetric and hierarchical flags, allowed entity pairs, polyhierarchy with a primary parent, cycle checks and recursive queries. Consumed by Anton.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andreas Kränzle",
+            "email": "kraenzle@k-r.ch"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "illuminate/database": "^13.0",
+        "illuminate/support": "^13.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^11.0",
+        "phpunit/phpunit": "^12.0",
+        "phpstan/phpstan": "^2.0",
+        "larastan/larastan": "^3.13"
+    },
+    "autoload": {
+        "psr-4": {
+            "KraenzleRitter\\EntityRelations\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KraenzleRitter\\EntityRelations\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KraenzleRitter\\EntityRelations\\EntityRelationsServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "phpstan": "phpstan analyse --no-progress"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
