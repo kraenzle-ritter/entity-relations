@@ -1,5 +1,6 @@
 # kraenzle-ritter/entity-relations
 
+[![CI](https://github.com/kraenzle-ritter/entity-relations/actions/workflows/ci.yml/badge.svg)](https://github.com/kraenzle-ritter/entity-relations/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/kraenzle-ritter/entity-relations)](LICENSE)
 [![PHP Version](https://img.shields.io/badge/PHP-8.3%2B-blue)](https://www.php.net/)
 

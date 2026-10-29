@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php: ['8.3', '8.4']
+        db: ['sqlite', 'mysql']
+
+    name: PHP ${{ matrix.php }} (${{ matrix.db }})
+
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_DATABASE: entity_relations_test
+          MYSQL_USER: db
+          MYSQL_PASSWORD: db
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: pdo_sqlite, pdo_mysql
+          tools: composer:v2
+          coverage: none
+
+      - run: composer validate --strict
+
+      - run: composer update --prefer-dist --no-progress
+
+      - name: composer test
+        run: |
+          if [ "${{ matrix.db }}" = "mysql" ]; then export ER_DB_PORT=3306; fi
+          composer test
+
+      - run: composer phpstan
