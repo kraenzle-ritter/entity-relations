@@ -1,5 +1,8 @@
 # kraenzle-ritter/entity-relations
 
+[![License](https://img.shields.io/github/license/kraenzle-ritter/entity-relations)](LICENSE)
+[![PHP Version](https://img.shields.io/badge/PHP-8.3%2B-blue)](https://www.php.net/)
+
 Typed relations and hierarchies between Eloquent entities, stored in one polymorphic table (`relations`). Built for [Anton](https://git.k-r.ch/kraenzle-ritter/anton) (roadmap issue #706); meant to serve kb later.
 
 ## Scope
